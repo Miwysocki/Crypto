@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button id="CheckButton" fx:id="checkButton" layoutX="250.0" layoutY="68.0" mnemonicParsing="false" onAction="#EncryptButtonClicked" text="encrypt" />
+      <TextField fx:id="inputText" layoutX="61.0" layoutY="37.0" prefHeight="25.0" prefWidth="189.0" />
+      <TextField fx:id="RailFenceOutput" layoutX="361.0" layoutY="93.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="inputN" layoutX="199.0" layoutY="93.0" prefHeight="25.0" prefWidth="31.0" text="3" />
+      <Text layoutX="46.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input:" />
+      <Text layoutX="361.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rail Fence" wrappingWidth="129.13671875" />
+      <Text layoutX="203.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="n" />
+      <Text layoutX="361.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2a" />
+      <TextField fx:id="Output_2a" layoutX="361.0" layoutY="158.0" prefHeight="25.0" prefWidth="179.0" />
+      <Button fx:id="decryptButton" layoutX="51.0" layoutY="68.0" mnemonicParsing="false" onAction="#DecryptButtonClicked" text="decrypt" />
+      <Text layoutX="363.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caesar" />
+      <TextField fx:id="CaesarOutput" layoutX="363.0" layoutY="229.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="CaesarInputA" layoutX="231.0" layoutY="229.0" prefHeight="25.0" prefWidth="30.0" text="7" />
+      <TextField fx:id="CaesarInputB" layoutX="278.0" layoutY="229.0" prefHeight="25.0" prefWidth="35.0" text="5" />
+
+   </children>
+</AnchorPane>
