@@ -20,6 +20,9 @@
       <TextField fx:id="CaesarOutput" layoutX="363.0" layoutY="229.0" prefHeight="25.0" prefWidth="179.0" />
       <TextField fx:id="CaesarInputA" layoutX="231.0" layoutY="229.0" prefHeight="25.0" prefWidth="30.0" text="7" />
       <TextField fx:id="CaesarInputB" layoutX="278.0" layoutY="229.0" prefHeight="25.0" prefWidth="35.0" text="5" />
+      <Text layoutX="361.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vigenere’a" />
+      <TextField fx:id="VinegereOutput" layoutX="363.0" layoutY="314.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="VinegereKeyInput" layoutX="173.0" layoutY="314.0" prefHeight="25.0" prefWidth="105.0" text="BREAK" />
 
    </children>
 </AnchorPane>

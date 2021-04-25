@@ -14,7 +14,10 @@ public class Controller {
     private TextField CaesarInputA;
     @FXML
     private TextField CaesarInputB;
-
+    @FXML
+    private TextField VinegereOutput;
+    @FXML
+    private TextField VinegereKeyInput;
     @FXML
     private TextField  Output_2a;
 
@@ -36,6 +39,7 @@ public class Controller {
         RailFenceOutput.setText(RailFence.encrypt(input,n));
         Output_2a.setText(Matrix.encrypt_2a(input));
         CaesarOutput.setText(Caesar.encrypt(input,a,b));
+        VinegereOutput.setText(Vigenere.encryption(input,VinegereKeyInput.getText()));
     }
 
     @FXML
@@ -49,5 +53,6 @@ public class Controller {
         RailFenceOutput.setText(RailFence.decrypt(input,n));
         Output_2a.setText(Matrix.decrypt_2a(input));
         CaesarOutput.setText(Caesar.decrypt(input,a,b));
+        VinegereOutput.setText(Vigenere.decrypt(input,VinegereKeyInput.getText()));
     }
 }
