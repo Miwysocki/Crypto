@@ -10,10 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        Matrix.decrypt_2a("YPCTRROG");
-        //Matrix.encrypt_2a("fdsadfastgr");
-       // Caesar.encrypt("ABC",7,5);
-       // Vigenere.decrypt("xprfk","fiona");
+        //Matrix.decrypt_2b("CRYPTOGRAPHYYYY","CONVENIENCE");
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 500));

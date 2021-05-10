@@ -84,4 +84,116 @@ public class Matrix {
 
     }
 
+    public static String encrypt_2b(String word, String key) {
+        String encrypted = "";
+
+        char tab[][] = new char[key.length()][key.length() + 1];
+        int tabKey[] = new int[key.length()];
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        int indexTab = 1;
+        for (int j = 0; j < alphabet.length(); j++) {
+            for (int i = 0; i < key.length(); i++) {
+                if (key.charAt(i) == alphabet.charAt(j)) {
+                    tabKey[i] = indexTab;
+                    indexTab++;
+                }
+            }
+        }
+
+        int glIndex = 0;
+        int width = 0;
+        while(glIndex < word.length()){
+
+            for (int length = 0; length < key.length(); length++) {
+                if(glIndex >= word.length()) break;
+                tab[length][width] = word.charAt(glIndex);
+                glIndex++;
+            }
+            width++;
+        }
+
+
+        int index = 0;
+        int wdt = word.length() / key.length() +1;
+         for(int i =1; i < key.length()+1; i++){
+             for(int j=0; j < tabKey.length; j++){
+                 if(tabKey[j] == i) index = j;
+             }
+
+             for(int k =0; k <wdt; k++){
+                 encrypted += tab[index][k];
+             }
+
+         }
+
+        return encrypted;
+    }
+
+    public static String decrypt_2b(String word, String key) {
+        String decrypted ="";
+
+        int lines = word.length() / key.length();
+        int redundantLetters = word.length() % key.length();
+        int red = redundantLetters;
+        char tab[][] = new char[key.length()][lines + 1];
+        int tabKey[] = new int[key.length()];
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        int indexTab = 0;
+        for (int j = 0; j < alphabet.length(); j++) {
+            for (int i = 0; i < key.length(); i++) {
+                if (key.charAt(i) == alphabet.charAt(j)) {
+                    tabKey[i] = indexTab;
+                    indexTab++;
+                }
+            }
+        }
+
+
+        int index = 0;
+        int j = 0;
+        int whichColumn;
+        while(j < key.length()){
+
+            for( whichColumn=0; whichColumn < tabKey.length; whichColumn++)
+                 {if(tabKey[whichColumn] == j) break;}
+
+            for(int i =0; i < lines; i++){
+                if(index >= word.length()-1) break;
+                tab[whichColumn][i] = word.charAt(index);
+                index++;
+            }
+            //check if one of first columns -
+            boolean redundantColumn = false;
+            for(int c =0; c < red; c++){
+                if(whichColumn == c) redundantColumn = true;
+            }
+
+
+            if(redundantLetters > 0 && redundantColumn ){
+                tab[whichColumn][lines] = word.charAt(index);
+                redundantLetters--;
+                index++;
+            }
+            j++;
+        }
+
+        int columns = key.length();
+        if(word.length() % key.length() != 0 ) lines += 1;
+        int i =0;
+        while (decrypted.length() < word.length())
+        {
+            for(int k =0; k < columns; k++){
+                if(decrypted.length() >= word.length()) break;
+                if(tab[k][i] != 0) decrypted += tab[k][i];
+
+            }
+            i++;
+        }
+
+
+            return decrypted;
+    }
+
 }

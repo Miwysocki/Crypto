@@ -14,15 +14,18 @@
       <Text layoutX="361.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rail Fence" wrappingWidth="129.13671875" />
       <Text layoutX="203.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="n" />
       <Text layoutX="361.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2a" />
-      <TextField fx:id="Output_2a" layoutX="361.0" layoutY="158.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="Output_2a" layoutX="361.0" layoutY="153.0" prefHeight="25.0" prefWidth="179.0" />
       <Button fx:id="decryptButton" layoutX="51.0" layoutY="68.0" mnemonicParsing="false" onAction="#DecryptButtonClicked" text="decrypt" />
-      <Text layoutX="363.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caesar" />
-      <TextField fx:id="CaesarOutput" layoutX="363.0" layoutY="229.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="CaesarInputA" layoutX="231.0" layoutY="229.0" prefHeight="25.0" prefWidth="30.0" text="7" />
-      <TextField fx:id="CaesarInputB" layoutX="278.0" layoutY="229.0" prefHeight="25.0" prefWidth="35.0" text="5" />
-      <Text layoutX="361.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vigenere’a" />
-      <TextField fx:id="VinegereOutput" layoutX="363.0" layoutY="314.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="VinegereKeyInput" layoutX="173.0" layoutY="314.0" prefHeight="25.0" prefWidth="105.0" text="BREAK" />
+      <Text layoutX="363.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caesar" />
+      <TextField fx:id="CaesarOutput" layoutX="361.0" layoutY="266.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="CaesarInputA" layoutX="235.0" layoutY="266.0" prefHeight="25.0" prefWidth="30.0" text="7" />
+      <TextField fx:id="CaesarInputB" layoutX="289.0" layoutY="266.0" prefHeight="25.0" prefWidth="35.0" text="5" />
+      <Text layoutX="361.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vigenere’a" />
+      <TextField fx:id="VinegereOutput" layoutX="363.0" layoutY="339.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="VinegereKeyInput" layoutX="198.0" layoutY="339.0" prefHeight="25.0" prefWidth="105.0" text="BREAK" />
+      <TextField fx:id="Output_2b" layoutX="363.0" layoutY="200.0" prefHeight="25.0" prefWidth="179.0" />
+      <Text layoutX="363.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2b" />
+      <TextField fx:id="key_2b" layoutX="204.0" layoutY="200.0" prefHeight="25.0" prefWidth="120.0" text="CONVENIENCE" />
 
    </children>
 </AnchorPane>
