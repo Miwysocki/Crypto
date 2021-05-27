@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.Arrays;
+
 public class Matrix {
     public static String  encrypt_2a(String word)
     {
@@ -160,7 +162,7 @@ public class Matrix {
                  {if(tabKey[whichColumn] == j) break;}
 
             for(int i =0; i < lines; i++){
-                if(index >= word.length()-1) break;
+                if(index >= word.length()) break;
                 tab[whichColumn][i] = word.charAt(index);
                 index++;
             }
@@ -192,8 +194,168 @@ public class Matrix {
             i++;
         }
 
-
             return decrypted;
     }
 
+    public static String encrypt_2c(String word, String key) {
+        String encrypted = "";
+        StringBuilder stringBuilder = new StringBuilder();
+        double column = key.length();
+        double row = column;
+        char[][] textCharArray = new char[(int) row][(int) column];
+        char[] keyCharArray = new char[key.length()];
+        char[] sortedKeyCharArray;
+
+        for (int i = 0; i < keyCharArray.length; i++) {
+            keyCharArray[i] = key.charAt(i);
+        }
+
+        sortedKeyCharArray = keyCharArray.clone();
+        Arrays.sort(sortedKeyCharArray);
+
+        int[] arrayOfIndexes = new int[keyCharArray.length];
+        char[] tmpKeyCharArray;
+        tmpKeyCharArray = keyCharArray.clone();
+        for (int i = 0; i < keyCharArray.length; i++) {
+            for (int j = 0; j < sortedKeyCharArray.length; j++) {
+                if (sortedKeyCharArray[i] == tmpKeyCharArray[j]) {
+                    tmpKeyCharArray[j] = 0;
+                    arrayOfIndexes[i] = j;
+                    break;
+                }
+            }
+        }
+
+        int size = 0;
+        boolean finished = false;
+        int index = 0;
+
+        for (int i = 0; i < column; i++) {
+            if (finished) {
+                break;
+            }
+            for (int j = 0; j <= arrayOfIndexes[i]; j++) {
+                if (index < word.length()) {
+                    if (size >= word.length()) {
+                        finished = true;
+                        break;
+                    }
+                    textCharArray[i][j] = word.charAt(index++);
+                    size++;
+                }
+            }
+        }
+
+        for (int i = 0; i < column; i++) {
+            index = arrayOfIndexes[i];
+            for (int j = 0; j < row; j++) {
+                stringBuilder.append(textCharArray[j][index]);
+            }
+        }
+        encrypted = String.valueOf(stringBuilder);
+        return encrypted;
+
+    }
+    static public String decrypt_2c(String word, String key) {
+        String decrypted ="";
+
+        int lines = word.length() / key.length();
+        char tab[][] = new char[key.length()][key.length()];
+        int tabKey[] = new int[key.length()];
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        int indexTab = 0;
+        for (int j = 0; j < alphabet.length(); j++) {
+            for (int i = 0; i < key.length(); i++) {
+                if (key.charAt(i) == alphabet.charAt(j)) {
+                    tabKey[i] = indexTab;
+                    indexTab++;
+                }
+            }
+        }
+
+        for(int i =0; i < tabKey.length; i ++){
+            for(int j =0 ; j < tabKey.length; j++){
+                if(tabKey[j] == i){
+                    for( int k =0; k <= j; k++){
+                        tab[i][k] = '*';
+                    }
+                }
+            }
+        }
+
+        int redundant=0;
+        //counting number of lines
+        int numberOfLines =0;
+        int numOfWords = word.length();
+        for(int i =0; i < key.length(); i++){
+            for(int j =0; j < key.length();j++){
+                if(numOfWords <= 0) break;
+                if(tabKey[j] == i){
+                    numOfWords -= j+1;
+                    if(numOfWords < 0){ // not full line
+                        redundant = (j+1) + numOfWords;
+                    }
+                    numberOfLines++;
+                }
+            }
+        }
+
+        int lastLineField = redundant;
+        boolean lastLineNotFull = false;
+        if(redundant > 0)  lastLineNotFull = true;
+
+        int index = 0;
+        for(int k = 0; k < key.length(); k ++){
+            int whichColumn;
+            for( whichColumn = 0; whichColumn < tabKey.length; whichColumn++){
+                if( tabKey[whichColumn] == k){
+                    break;
+                }
+            }
+
+                for(int w = 0; w < numberOfLines; w ++){
+                    if(w == (numberOfLines-1 )&& lastLineNotFull){ //last line
+                        if(redundant > 0  && tab[w][whichColumn] == '*'){
+                            if(index == word.length()) {
+                                break;
+                            }
+                            //czy nalezy do tych pierwszych kolumn
+                            if(whichColumn < lastLineField){
+                                tab[w][whichColumn] = word.charAt(index);
+                                index++;
+                                redundant--;
+                            }
+                        }
+                    }
+                    else if(tab[w][whichColumn] == '*'){
+                        if(index == word.length()) {
+                            break;
+                        }
+                            tab[w][whichColumn] = word.charAt(index);
+                            index++;
+                    }
+                }
+
+        }
+
+        for(int k = 0; k < numberOfLines; k++){
+            for(int w    = 0; w < key.length(); w++){
+                if(tab[k][w] != '*')
+                decrypted += tab[k][w];
+            }
+        }
+        return decrypted;
+    }
+
+
+
+
+    static long sequence(int n) {
+        long sum = 0;
+        for (int i = 1; i < n + 1; i++) {
+            sum += i;
+        }
+        return sum;
+    }
 }
